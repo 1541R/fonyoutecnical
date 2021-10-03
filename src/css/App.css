@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    font-family: sans-serif;
+    font-size: 1rem;
+    color: yellow;
+    background: url("../img/react_logo.png");
+    background-size: auto;
+    background-repeat: repeat;
+}
