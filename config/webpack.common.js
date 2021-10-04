@@ -27,7 +27,7 @@ module.exports = {
         extensions: ['.json', '.js', '.jsx'],
     },
     plugins: [
-        new CleanWebpackPlugin(), //Elimina todo
+        //new CleanWebpackPlugin(), //Elimina todo
         new HtmlWebpackPlugin({
             template: "./public/index.html"    
         })
