@@ -6,52 +6,67 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import AppBar from '../appBar';
 import Button from '@material-ui/core/Button';
 import './style.css';
+import { Box } from '@material-ui/core';
 
 function Page(props) {
+
     const {
         goTo,
         currentItem,
     } = props;
-
+    console.log('Location', currentItem);
+    //const location = (currentItem.location.name === undefined) ? '' : currentItem.location.name;
     return (
         <Fragment>
             <CssBaseline />
 
             <AppBar />
-
             <div className="details-page">
-                <Paper
-                    elevation={1}
-                    className="paper-container"
-                >
-                    {currentItem ?
-                        <Fragment>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                {currentItem.title}
-                            </Typography>
-
-                            <div
-                                className="item-image"
-                                style={{
-                                    backgroundImage: `url(${currentItem.image})`,
-                                }}
-                            />
-
-                            <Typography gutterBottom component="p" className="content">
-                                {currentItem.content}
-                            </Typography>
-                        </Fragment>
-                        :
-                        <CircularProgress className="item-loader" />
-                    }
-
-                    <Button
-                        color="primary"
-                        onClick={() => goTo('/results')}
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        '& > :not(style)': {
+                        m: 1,
+                        width: 300,
+                        height: 480,
+                        },
+                    }}
                     >
-                        Back
-                    </Button>
-                </Paper>
+                    <Paper
+                        elevation={1}
+                        className="paper-container"
+                    >
+                        {currentItem ?
+                            <Fragment>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    {currentItem.name}
+                                </Typography>
+
+                                <div
+                                    className="item-image"
+                                    style={{
+                                        backgroundImage: `url(${currentItem.image})`,
+                                    }}
+                                />
+                                
+                                <Typography variant="subtitle1" gutterBottom component="p" className="content">
+                                    Gender: { currentItem.gender }<br/>
+                                    Status: {currentItem.status}
+                                </Typography>
+                            </Fragment>
+                            :
+                            <CircularProgress className="item-loader" />
+                        }
+
+                        <Button
+                            color="primary"
+                            onClick={() => goTo('/results')}
+                        >
+                            Back
+                        </Button>
+                    </Paper>
+                </Box>
             </div>
         </Fragment>
     );

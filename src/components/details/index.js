@@ -7,31 +7,54 @@ import findCurrentItem from '../../redux/actions/findCurrentItem';
 class Details extends Component {
     constructor(props) {
         super(props);
-
+        this.state = {
+            data: {},
+        };
         this.goTo = this.goTo.bind(this);
     }
 
     componentDidMount() {
+        /*
+        const {
+            match: { params: { itemId } },
+            findCurrentItem,
+        } = this.props;
+        findCurrentItem(itemId);*/
         const {
             match: { params: { itemId } },
             findCurrentItem,
         } = this.props;
 
-        findCurrentItem(itemId);
+        fetch(`https://rickandmortyapi.com/api/character/${itemId}`)
+                .then( res => res.json() )
+                .then( data => {
+                    //addData(data);
+
+                    this.setState({ data: data })
+
+                }).catch(function(error){
+                    console.log('No hay error',error);
+                });
+        
     }
+
 
     goTo(path) {
         this.props.history.push(path);
     }
 
     render() {
-        const {
+        /*const {
             currentItem,
-        } = this.props;
+        } = this.props; */
+
+        const {
+            data,
+        } = this.state;
 
         return (
             <Page
-                currentItem={currentItem}
+                currentItem={data}
                 goTo={this.goTo}
             />
         );

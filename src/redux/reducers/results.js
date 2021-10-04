@@ -1,5 +1,4 @@
 import { type as findResultsType } from '../actions/findResults';
-import items from '../../data/items';
 
 const defaultState = [];
 let data = [];

@@ -29,7 +29,7 @@ class IAppBar extends Component {
             match,
             history,
         } = this.props;
-
+       
         this.setState({ text });
 
         findResults(text);

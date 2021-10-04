@@ -1,5 +1,4 @@
 import { type as findSuggestionsType } from '../actions/findSuggestions';
-import items from '../../data/items';
 
 const defaultState = [];
 let data = [];

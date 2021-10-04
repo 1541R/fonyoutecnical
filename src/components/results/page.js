@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import FiberManualRecord from '@material-ui/icons/FiberManualRecord';
 import AppBar from '../appBar';
 import './style.css';
 
@@ -15,6 +16,22 @@ function Page(props) {
     } = props;
 
     const isEmpty = results.length === 0;
+
+    const status = (status) => {
+        let classname = 'uknowed';
+        switch (status) {
+            case 'Dead':
+                classname = 'red';
+                break;
+            case 'Alive':
+                classname = 'green';
+                break;
+            default:
+                classname = 'uknowed';
+                break;
+        }
+        return classname;
+    }
 
     return (
         <Fragment>
@@ -33,7 +50,7 @@ function Page(props) {
                             key={item.id}
                             className="card-container"
                         >
-                            <Card
+                            <Card sx={{ maxWidth: 345 }}
                                 className="card"
                                 onClick={() => goTo(`/details/${item.id}`)}
                             >
@@ -41,11 +58,18 @@ function Page(props) {
                                     <CardMedia
                                         className="card-media"
                                         image={item.image}
-                                        title={item.title}
+                                        title={item.name}
                                     />
                                     <CardContent>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            {item.title}
+                                        <Typography gutterBottom variant="h5" component="h3">
+                                            {item.name}
+                                        </Typography>
+                                        
+                                        <Typography className="status" component="p">
+                                            <label className={status(item.status)}>
+                                                <FiberManualRecord fontSize="small" /> 
+                                            </label>
+                                            {item.status}
                                         </Typography>
                                         <Typography component="p">
                                             {item.content}

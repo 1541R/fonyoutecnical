@@ -11,7 +11,9 @@ class Autocomplete extends Component {
 
         this.state = {
             isOpen: true,
+            texto: '',
         };
+
     }
 
     render() {
@@ -23,6 +25,7 @@ class Autocomplete extends Component {
         } = this.props;
         const {
             isOpen,
+            texto
         } = this.state;
 
         return (
@@ -32,25 +35,25 @@ class Autocomplete extends Component {
                 </div>
                 <InputBase
                     placeholder="Search…"
-                    value={text}
+                    value={texto}
                     style={{ width: '100%' }}
                     onChange={(event) => {
+                        
                         const newText = event.target.value;
-
                         onChangeText(newText);
-
+                        this.setState({  texto : newText });
                         if (!isOpen && newText) {
                             this.setState({ isOpen: true });
                         } else if (isOpen && !newText) {
-                            this.setState({ isOpen: true });
+                            this.setState({ isOpen: false });
                         }
                     }}
                     onBlur={() => {
-                        setTimeout(() => this.setState({ isOpen: true }), 100);
+                        setTimeout(() => this.setState({ isOpen: false }), 100);
                     }}
                     onFocus={() => {
                         if (text) {
-                            this.setState({ isOpen: true });
+                            setTimeout(() => this.setState({isOpen: true }) , 100);
                         }
                     }}
                     onKeyPress={(event) => {
@@ -65,10 +68,11 @@ class Autocomplete extends Component {
                     <MenuItem
                         key={suggestion.id}
                         component="div"
-                        onClick={(e) => {
-                            //console.log(e);
-                            onChangeSelection(suggestion.name);
-                            this.setState({ isOpen: false });
+                        onClick={() => {
+                            //onChangeSelection(suggestion.name);
+                            this.setState({  texto : suggestion.name });
+                            this.setState({ isOpen: true });
+                            setTimeout( () => { console.log(texto); }, 600 );
                         }}
                     >
                         {suggestion.name}
