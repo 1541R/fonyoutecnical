@@ -1,7 +1,5 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const { HotModuleReplacementPlugin } = require("webpack");
 const path = require('path');
 /** @type {import('webpack').Configuration} */
 module.exports = {
@@ -9,8 +7,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "../build"),
         filename: "SearchUXBundle.js",
-        publicPath: "./" //Descomentar en producción
-        //publicPath: "/"
+        publicPath: "./"
     },
     mode: "production",
     module: {
@@ -29,13 +26,10 @@ module.exports = {
     resolve: {
         extensions: ['.json', '.js', '.jsx'],
     },
-    
     plugins: [
         //new CleanWebpackPlugin(), //Elimina todo
         new HtmlWebpackPlugin({
             template: "./public/index.html"    
-        }),
-        new HotModuleReplacementPlugin(),
-        new ReactRefreshWebpackPlugin()
+        })
     ]
 }
