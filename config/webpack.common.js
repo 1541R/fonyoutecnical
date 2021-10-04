@@ -32,7 +32,7 @@ module.exports = {
     plugins: [
         //new CleanWebpackPlugin(), //Elimina todo
         new HtmlWebpackPlugin({
-            template: "./public/index.html"    
+            template: "./build/index.html"    
         }),
         new HotModuleReplacementPlugin(),
         new ReactRefreshWebpackPlugin()
