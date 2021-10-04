@@ -26,10 +26,13 @@ module.exports = {
     resolve: {
         extensions: ['.json', '.js', '.jsx'],
     },
+    
     plugins: [
         //new CleanWebpackPlugin(), //Elimina todo
         new HtmlWebpackPlugin({
             template: "./public/index.html"    
-        })
+        }),
+        new HotModuleReplacementPlugin(),
+        new ReactRefreshWebpackPlugin()
     ]
 }

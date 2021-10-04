@@ -10,7 +10,7 @@ class Autocomplete extends Component {
         super(props);
 
         this.state = {
-            isOpen: true,
+            isOpen: false,
             texto: '',
         };
 
@@ -69,10 +69,11 @@ class Autocomplete extends Component {
                         key={suggestion.id}
                         component="div"
                         onClick={() => {
-                            //onChangeSelection(suggestion.name);
+                            onChangeSelection(suggestion.name);
                             this.setState({  texto : suggestion.name });
                             this.setState({ isOpen: true });
-                            setTimeout( () => { console.log(texto); }, 600 );
+                            //setTimeout( () => { console.log(texto); }, 600 );
+                            console.log(texto);
                         }}
                     >
                         {suggestion.name}
