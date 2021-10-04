@@ -9,7 +9,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "../build"),
         filename: "SearchUXBundle.js",
-        publicPath: "./"
+        publicPath: "./" //Descomentar en producción
+        //publicPath: "/"
     },
     mode: "production",
     module: {
@@ -32,7 +33,7 @@ module.exports = {
     plugins: [
         //new CleanWebpackPlugin(), //Elimina todo
         new HtmlWebpackPlugin({
-            template: "./build/index.html"    
+            template: "./public/index.html"    
         }),
         new HotModuleReplacementPlugin(),
         new ReactRefreshWebpackPlugin()
