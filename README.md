@@ -1,4 +1,4 @@
-# Prueba técnica YouFon
+# Prueba técnica FonYou
 ## _Jacob Isai Rodriguez Alfaro_
 
 [https://1541r.github.io/fonyoutecnical/]( https://1541r.github.io/fonyoutecnical/)
